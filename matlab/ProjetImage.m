@@ -39,6 +39,11 @@ imshow(recons,[]);title('Image reconstruite');
 Icercle = cercle(recons);
 figure;
 imshow(Icercle,[]);title('Image cercle');
+
+hough voting
+Icer = hough(Icercle);
+figure;
+imshow(Icer,[]);title('Image cercle');
 %%
 s=strel('disk',5);
 fer=imclose(recons,s);

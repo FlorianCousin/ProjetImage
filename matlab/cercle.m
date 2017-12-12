@@ -12,7 +12,7 @@ Ic = Itmp;
 while sum(sum(Itmp)) > 0
     r = r+1;
     Ic = Itmp;
-    Itmp = imopen(Im,strel('sphere',r));
+    Itmp = imopen(Im,strel('disk',r, 8));
  
 end
 
