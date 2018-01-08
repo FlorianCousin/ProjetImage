@@ -7,6 +7,7 @@ function Ic = cercle(Im)
 r = 150;
 Itmp = imopen(Im,strel('disk',r));
 Ic = Itmp;
+conn = bwconncomp(Im, 8);
 
 
 while sum(sum(Itmp)) > 0
