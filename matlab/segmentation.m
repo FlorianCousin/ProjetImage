@@ -1,4 +1,4 @@
-function Issangle = segmentation(Im)
+function Issangle = segmentation(I)
 
 % Im est une image rgb représentant des pièces
 % If est une image binaire qui correspond à la segmentation des pièces

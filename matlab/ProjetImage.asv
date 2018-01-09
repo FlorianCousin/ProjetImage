@@ -7,17 +7,16 @@ I = double(imread('../images/E2_1.jpg')) / 255;
 figure;
 imshow(I);
 
+strel('disk',10);
+ferm = imclose(I,strel);
+figure;
+imshow(ferm);title('fermeture');
+
+I = ferm - I;
+figure;
+imshow(ferm);title('fermeture');
+%%
 grey = rgb2lab(I);
-
-% strel('disk',10);
-% ferm = imclose(grey,strel);
-% figure;
-% imshow(ferm);title('fermeture');
-% 
-% I = ferm - grey;
-% figure;
-% imshow(I);title('ferme');
-
 
 figure;
 imshow(grey(:, :, 3), [0,100]); title('Lab chiatique');
