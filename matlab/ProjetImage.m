@@ -2,21 +2,23 @@
 clear
 close all;
 
-I = double(imread('../images/E2_1.jpg')) / 255;
+I = double(imread('..\comment\MC-M4_355c.jpg')) / 255;
+
+%M8-C1_C2_C5_C10_C20_C50_E1_E2
+%E1_2
 
 figure;
 imshow(I);
 
-grey = rgb2lab(I);
+segmentation(I);
 
-% strel('disk',10);
-% ferm = imclose(grey,strel);
-% figure;
-% imshow(ferm);title('fermeture');
-% 
-% I = ferm - grey;
-% figure;
-% imshow(I);title('ferme');
+figure;
+imshow(I .* negatif(I), []);
+
+%%
+grey = rgb2lab(I);
+Ihsv = rgb2hsv(I);
+
 
 
 figure;
@@ -29,10 +31,18 @@ figure;
 bar(x,counts); title('barre');
 
 
-f_bw  = im2bw(grey(:,:,3), 0.7);
+f_bw  = im2bw(Ihsv(:,:,2), 0.3);
 figure;
 imshow(f_bw,[]);title('Image segmentée');
-%%
+
+%imshow(Ihsv(:, :, 2));
+
+%
+
+
+%
+
+
 close all;
 f_bw3 = imfill(imclose(f_bw, strel('disk', 2)),'holes');
 figure;
@@ -49,6 +59,8 @@ imshow(recons,[]); title('Image reconstruite');
 Ichepo = imopen(recons, strel('disk', 50));
 figure;
 imshow(Ichepo,[]); title('Image chepo');
+
+Ichepo = imclearborder(Ichepo);
 
 % tic
 % Icercle = cercle(recons);
