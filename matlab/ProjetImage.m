@@ -50,11 +50,11 @@ Ichepo = imopen(recons, strel('disk', 50));
 figure;
 imshow(Ichepo,[]); title('Image chepo');
 
-tic
-Icercle = cercle(recons);
-toc
-figure;
-subplot(1, 2, 1); imshow(Icercle,[]); title('Image cercle');
+% tic
+% Icercle = cercle(recons);
+% toc
+% figure;
+% subplot(1, 2, 1); imshow(Icercle,[]); title('Image cercle');
 
 % hough voting
 % Icer = hough(Ichepo);
@@ -75,6 +75,10 @@ end
 Issangle = im2bw(Ichepo - Issangle, 0.9);
 toc
 subplot(1, 2, 2); imshow(Issangle,[]); title('Image cercle');
+
+If = Issangle .* I;
+figure;
+imshow(If,[]); title('Image sans fond');
 
 
 %%
