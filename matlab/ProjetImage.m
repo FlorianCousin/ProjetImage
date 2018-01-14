@@ -2,18 +2,54 @@
 clear
 close all;
 
-I = double(imread('..\comment\MC-M4_355c.jpg')) / 255;
+I = double(imread('..\comment\E1_2.jpg')) / 255;
 
 %M8-C1_C2_C5_C10_C20_C50_E1_E2
 %E1_2
+%MC-M4_355c
 
 figure;
 imshow(I);
 
-segmentation(I);
+% tic
+% Itsf = testScalaireFond(I);
+% toc
+% 
+% tic
+% Itlab = rgb2lab(Itsf);
+% toc
+% 
+% tic
+% Iplan = imadjust(mat2gray(Itlab(:, :, 3)));
+% toc
+% 
+% tic
+% level = multithresh(Iplan, 4);
+% toc
+% 
+% tic
+% Ibw = imbinarize(Iplan, level(1));
+% toc
+% 
+% tic
+% Ifull = imfill(Ibw, 'holes');
+% toc
+
+If = touche(I);
+
+[centers, radii] = imfindcircles(If, [140, 240], 'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.95);
 
 figure;
-imshow(I .* negatif(I), []);
+imshow(I, []); colorbar;
+viscircles(centers, radii);
+
+
+% tic
+% segmentation(I);
+% toc
+% 
+% figure;
+% imshow(I .* segmentation(I), []);
 
 %%
 grey = rgb2lab(I);
