@@ -16,15 +16,17 @@ Iplan = imadjust(mat2gray(Itlab(:, :, 3)));
 
 level = multithresh(Iplan, 4);
 
-Ibw = imbinarize(Iplan, level(1));
+Ibw = im2bw(Iplan, level(1));
 
-Ifull = imfill(Ibw, 'holes');
+Ifull = imfill(Ibw, 'holes'); 
 
-Ismooth = imopen(Ifull, strel('disk', 5));
+clear = imclearborder(Ifull);
 
-Ismooth = imclose(Ismooth, strel('disk', 5));
+Ismooth = imopen(clear, strel('disk', 7));
 
-%If = bwconvhull(Ismooth, 'objects');
+Ismooth = imclose(Ismooth, strel('disk', 7));
+
+%m = bwconvhull(Ismooth, 'objects', 8);
 If = Ismooth;
 
 end
