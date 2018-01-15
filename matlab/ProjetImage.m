@@ -2,7 +2,7 @@
 clear
 close all;
 
-I = double(imread('..\comment\E1_2.jpg')) / 255;
+I = double(imread('..\comment\MC-M4_355c.jpg')) / 255;
 
 %M8-C1_C2_C5_C10_C20_C50_E1_E2
 %E1_2
@@ -40,7 +40,7 @@ If = touche(I);
 [centers, radii] = imfindcircles(If, [140, 240], 'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.95);
 
 figure;
-imshow(I, []); colorbar;
+imshow(I .* If, []); colorbar;
 viscircles(centers, radii);
 
 
