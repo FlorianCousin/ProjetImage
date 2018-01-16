@@ -1,25 +1,44 @@
 function grad = gradi(I)
+
 Itsf = testScalaireFond(I);
+Ilab = rgb2lab(Itsf);
 
-Itlab = rgb2lab(Itsf);
+Iflou = imfilter(double(Ilab(:,:,3)),fspecial('gaussian'),20,20);
 
-Iplan = imadjust(mat2gray(Itlab(:, :, 3)));
+[Gx,Gy] = imgradientxy(Ilab(:,:,3));
 
-level = multithresh(Iplan, 4);
+[Gmag, ~] = imgradient(Gx, Gy);
 
-Ibw = im2bw(Iplan, level(1));
+marqueur = imextendedmax(Iflou, 21);
 
-clear = imclearborder(Ibw);
-
-[Gx,Gy] = imgradientxy(Ibw);
-
-[Gmag, Gdir] = imgradient(Gx, Gy);
-
-% Ifull = imfill(Gmag, 'holes');
+% grad = marqueur;
 % 
-% Ismooth = imopen(Ifull, strel('disk', 7));
-% 
-% Ismooth = imclose(Ismooth, strel('disk', 6));
+% figure;
+% imshow(Ilab(:,:,3),[]);title('Ilab');
 
-grad = Gmag;
+
+masque = watershed(imimposemin(1-Ilab(:,:,3), marqueur));
+
+Origin = masque;
+
+%Origin(masque == 0) = 0;
+Origin = ~im2bw(Origin,0);
+
+
+% Origin.size()
+% marqueur.size()
+
+marqueursTot = Origin + marqueur;
+
+figure;
+imshow(marqueursTot,[]);title('Marqueurs totaux');
+
+water = watershed(imimposemin(Gmag, marqueursTot));
+
+grad = water;
+
+end
+
+
+
 
