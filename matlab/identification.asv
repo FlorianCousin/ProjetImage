@@ -1,6 +1,6 @@
 function id = identification(I)
 
-%   C
+
 [coordCer1, rad1] = imfindcircles(I,round([285/2,296/2]),'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.97);
 figure;
 imshow(I,[]),title('1 centime');
@@ -24,7 +24,7 @@ figure;
 imshow(I,[]),title('10 centimes');
 viscircles(coordCer10, rad10);
 
-[coordCer20, rad20] = imfindcircles(I,round([398/2,415/2]),'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.95);
+[coordCer20, rad20] = imfindcircles(I,round([398/2,415/2]),'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.98);
 
 figure;
 imshow(I,[]),title('20 centimes');
@@ -48,15 +48,7 @@ figure;
 imshow(I,[]),title('2 euros');
 viscircles(coordCer2e, rad2e);
 
-id = [coordCer1, rad1];
-id = [id;[coordCer2,rad2]];
-id = [id;[coordCer5,rad5]];
-id = [id;[coordCer10,rad10]];
-id = [id;[coordCer20,rad20]];
-id = [id;[coordCer50,rad50]];
-id = [id;[coordCer1e,rad1e]];
-id = [id;[coordCer2e,rad2e]];
-
-id
+id = [[coordCer1, rad1]];
+id = [id
 
 end
