@@ -1,20 +1,42 @@
 function grad = gradi(I)
 
-Ilab = rgb2lab(I);
+Itsf = testScalaireFond(I);
+Ilab = rgb2lab(Itsf);
 
-Ilabp = imgaussfilt(Ilab(:, :, 3), 4);
+Iflou = imfilter(double(Ilab(:,:,3)),fspecial('gaussian'),20,20);
 
-[Gx,Gy] = imgradientxy(Ilabp);
+[Gx,Gy] = imgradientxy(Ilab(:,:,3));
 
 [Gmag, ~] = imgradient(Gx, Gy);
 
-level = multithresh(Gmag, 2);
+marqueur = imextendedmax(Iflou, 21);
 
-Ibw = imbinarize(Gmag, level(1));
+% grad = marqueur;
+% 
+% figure;
+% imshow(Ilab(:,:,3),[]);title('Ilab');
 
-grad = Ibw;
+
+masque = watershed(imimposemin(1-Ilab(:,:,3), marqueur));
+
+Origin = masque;
+
+%Origin(masque == 0) = 0;
+Origin = ~im2bw(Origin,0);
+
+
+% Origin.size()
+% marqueur.size()
+
+marqueursTot = Origin + marqueur;
 
 figure;
-imhist(Ilabp);
+imshow(marqueursTot,[]);title('Marqueurs totaux');
+
+water = watershed(imimposemin(Gmag, marqueursTot));
+
+grad = water;
+
+end
 
 end
