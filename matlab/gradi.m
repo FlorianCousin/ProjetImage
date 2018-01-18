@@ -1,25 +1,20 @@
 function grad = gradi(I)
-Itsf = testScalaireFond(I);
 
-Itlab = rgb2lab(Itsf);
+Ilab = rgb2lab(I);
 
-Iplan = imadjust(mat2gray(Itlab(:, :, 3)));
+Ilabp = imgaussfilt(Ilab(:, :, 3), 4);
 
-level = multithresh(Iplan, 4);
+[Gx,Gy] = imgradientxy(Ilabp);
 
-Ibw = im2bw(Iplan, level(1));
+[Gmag, ~] = imgradient(Gx, Gy);
 
-clear = imclearborder(Ibw);
+level = multithresh(Gmag, 2);
 
-[Gx,Gy] = imgradientxy(Ibw);
+Ibw = imbinarize(Gmag, level(1));
 
-[Gmag, Gdir] = imgradient(Gx, Gy);
+grad = Ibw;
 
-% Ifull = imfill(Gmag, 'holes');
-% 
-% Ismooth = imopen(Ifull, strel('disk', 7));
-% 
-% Ismooth = imclose(Ismooth, strel('disk', 6));
+figure;
+imhist(Ilabp);
 
-grad = Gmag;
-
+end
