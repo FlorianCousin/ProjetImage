@@ -26,23 +26,9 @@ Ismooth = imopen(clear, strel('disk', 7));
 
 Ismooth = imclose(Ismooth, strel('disk', 7));
 
-
-
-
-Ihsv = rgb2hsv(I);
-level = multithresh(Ihsv(:, :, 1), 1);
-Ibw = im2bw(Ihsv(:, :, 1), level(1));
-
-
-
-
-
-
-
-
 If = Ismooth;
 
-figure;
-imshow(I .* Ibw, []);
+% figure;
+% imshow(I .* Ibw, []);
 
 end

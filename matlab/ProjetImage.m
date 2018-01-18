@@ -3,7 +3,8 @@ clear
 close all;
 
 %I = double(imread('..\comment\M8-C1_C2_C5_C10_C20_C50_E1_E2.jpg')) / 255;
-I = double(imread('..\set\E2-02.jpg')) / 255;
+I = double(imread('..\set\set\E2-02.jpg')) / 255;
+
 %M8-C1_C2_C5_C10_C20_C50_E1_E2
 %E1_2
 %MC-M4_355c
@@ -11,32 +12,8 @@ I = double(imread('..\set\E2-02.jpg')) / 255;
 figure;
 imshow(I);
 
-% tic
-% Itsf = testScalaireFond(I);
-% toc
-% 
-% tic
-% Itlab = rgb2lab(Itsf);
-% toc
-% 
-% tic
-% Iplan = imadjust(mat2gray(Itlab(:, :, 3)));
-% toc
-% 
-% tic
-% level = multithresh(Iplan, 4);
-% toc
-% 
-% tic
-% Ibw = imbinarize(Iplan, level(1));
-% toc
-% 
-% tic
-% Ifull = imfill(Ibw, 'holes');
-% toc
-
-%If = touche(I);
-If = negatif(I);
+If = touche(I);
+%If = negatif(I);
 
 It = zeros(size(I));
 It(:, :, 1) = If;
@@ -46,7 +23,7 @@ It(:, :, 3) = If;
 [centers, radii] = imfindcircles(If, [140, 240], 'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.95);
 
 figure;
-imshow(I.*It, []); colorbar;
+imshow(I.*If, []); colorbar;
 viscircles(centers, radii);
 
 
