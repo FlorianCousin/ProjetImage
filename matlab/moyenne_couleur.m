@@ -1,10 +1,11 @@
-function moy = moyenne_couleur(I, center, radii)
+function moy = moyenne_couleur(I, xcenter, ycenter, radii)
 
 % Calcule la moyenne dans un cercle de l'image
 % Le cercle est forcément entièrement
 
 % Image
-% center : centre du cercle
+% xcenter :  abcsisse du centre du cercle
+% ycenter : ordonnée du centre du cercle
 % radii : rayon du cercle
 
 % moy : moyenne des pixels de I dans le cercle
@@ -12,9 +13,9 @@ function moy = moyenne_couleur(I, center, radii)
 som = zeros(1, 3);
 nbpix = 0;
 
-for i = center(1) - radii:center(1) + radii
-    for j = center(2) - radii:center(2) + radii
-        if distance(center(1), center(2), i, j) < radii
+for i = xcenter - radii : xcenter + radii
+    for j = ycenter - radii : ycenter + radii
+        if distance(xcenter, ycenter, i, j) < radii
             nbpix = nbpix + 1;
             som = som + I(i, j);
         end

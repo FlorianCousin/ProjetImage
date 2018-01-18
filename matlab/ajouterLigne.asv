@@ -1,0 +1,3 @@
+function tab = ajouterLigne(taba, ligne)
+
+% Permet d'ajouter une ligne à taba, et si taba
