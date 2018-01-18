@@ -26,6 +26,8 @@ Ismooth = imopen(clear, strel('disk', 7));
 
 Ismooth = imclose(Ismooth, strel('disk', 7));
 
+%Iconvhull = bwconvhull(Ismooth, 'objects');
+
 If = Ismooth;
 
 % figure;
