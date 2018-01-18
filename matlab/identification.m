@@ -1,6 +1,13 @@
 function id = identification(I)
 
-%   C
+%   Cette fonction permet de récupérer les coordonnées des centres et
+%   le rayon de pièces pour chaque cathégorie de pièce. 
+% 
+%   id : Matrice de 3 colonnes contenant les coordonnées du centre (x,y) et
+%   le rayon de la pièce.
+%
+%   I : Image contenant les pièces recherchées. 
+
 [coordCer1, rad1] = imfindcircles(I,round([285/2,296/2]),'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.97);
 figure;
 imshow(I,[]),title('1 centime');
@@ -18,7 +25,7 @@ figure;
 imshow(I,[]),title('5 centimes');
 viscircles(coordCer5, rad5);
 
-[coordCer10, rad10] = imfindcircles(I,round([352/2,355/2]),'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.98);
+[coordCer10, rad10] = imfindcircles(I,round([350/2,355/2]),'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.98);
 
 figure;
 imshow(I,[]),title('10 centimes');

@@ -10,7 +10,7 @@ I = double(imread('..\comment\M8-C1_C2_C5_C10_C20_C50_E1_E2.jpg')) / 255;
 %MC-M4_355c
 
 figure;
-imshow(I);
+imtool(I);
 
 If = touche(I);
 %If = negatif(I);
@@ -27,6 +27,21 @@ It(:, :, 3) = If;
 % viscircles(centers, radii);
 
 Id = identification(If);
+
+Itot = jardinage(Id);
+
+Itot
+
+[m,~] = size(Itot)
+
+for i= 1:m
+    figure;
+    imshow(If);
+    center = [Itot(i,1),Itot(i,2)]
+    ray = Itot(i,3)
+    viscircles(center,ray);
+end
+
 
 % tic
 % segmentation(I);
