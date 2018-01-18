@@ -20,7 +20,7 @@ If = zeros(m, n);
 
 for i = 1:m
     for j = 1:n
-        coef = (3 - I(i, j, 1) * v(1, 1, 1) - I(i, j, 2) * v(1, 1, 2) - I(i, j, 3) * v(1, 1, 3)) / 3;
+        coef = (log(3) - log(I(i, j, 1) * v(1, 1, 1) + I(i, j, 2) * v(1, 1, 2) + I(i, j, 3) * v(1, 1, 3))) / log(3);
         for k = 1:3
             If(i, j, k) = I(i, j, k) * coef;
         end

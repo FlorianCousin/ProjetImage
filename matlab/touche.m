@@ -12,9 +12,9 @@ Itsf = testScalaireFond(I);
 
 Itlab = rgb2lab(Itsf);
 
-Iplan = imadjust(mat2gray(Itlab(:, :, 3)));
+Iplan = mat2gray(Itlab(:, :, 3));
 
-level = multithresh(Iplan, 4);
+level = multithresh(Iplan, 3);
 
 Ibw = im2bw(Iplan, level(1));
 
@@ -26,7 +26,23 @@ Ismooth = imopen(clear, strel('disk', 7));
 
 Ismooth = imclose(Ismooth, strel('disk', 7));
 
-%m = bwconvhull(Ismooth, 'objects', 8);
+
+
+
+Ihsv = rgb2hsv(I);
+level = multithresh(Ihsv(:, :, 1), 1);
+Ibw = im2bw(Ihsv(:, :, 1), level(1));
+
+
+
+
+
+
+
+
 If = Ismooth;
+
+figure;
+imshow(I .* Ibw, []);
 
 end
