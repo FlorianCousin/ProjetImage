@@ -24,7 +24,13 @@ end
 
 figure; imshow(I, []);
 
-It = im2bw(rgb2gray(I), 0.15);
+Igray = rgb2gray(I);
+
+level = multithresh(Igray, 2);
+
+It = im2bw(Igray, level(1));
+
+%It = im2bw(rgb2gray(I), 0.15);
 
 f_bw3 = imfill(imclose(It, strel('disk', 2)),'holes');
 
