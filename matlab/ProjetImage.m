@@ -2,20 +2,37 @@
 clear
 close all;
 
-%I = double(imread('..\comment\M8-C1_C2_C5_C10_C20_C50_E1_E2.jpg')) / 255;
+I = double(imread('..\comment\M8-C1_C2_C5_C10_C20_C50_E1_E2.jpg')) / 255;
 %I = double(imread('..\set\set\C1_1.jpg')) / 255;
-I = double(imread('..\Image Prof\20141020_112558 (1).jpg')) / 255;
+%I = double(imread('..\Image Prof\20141020_112558 (1).jpg')) / 255;
 
 %M8-C1_C2_C5_C10_C20_C50_E1_E2
 %E1_2
 %MC-M4_355c
 
 figure;
-imtool(I);
+imshow(I);
 
 %If = touche(I);
 If = negatif(I);
 
+figure;
+imshow(If);
+
+[centers, radii] = imfindcircles(If, [140, 240], 'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.95);
+
+It = zeros(size(I));
+It(:, :, 1) = If;
+It(:, :, 2) = If;
+It(:, :, 3) = If;
+
+figure;
+imshow(It, []); colorbar;
+viscircles(centers, radii);
+
+Ic = ciecle(If, I);
+
+%%
 It = zeros(size(I));
 It(:, :, 1) = If;
 It(:, :, 2) = If;

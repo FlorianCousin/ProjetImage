@@ -16,7 +16,7 @@ nbpix = 0;
 
 for i = ceil(ycenter - radii) : floor(ycenter + radii)
     for j = ceil(xcenter - radii) : floor(xcenter + radii)
-        if distance(xcenter, ycenter, j, i) < radii
+        if distance(xcenter, ycenter, i, j) < radii
             nbpix = nbpix + 1;
             for k = 1:3
                 som(k) = som(k) + I(i, j, k);
@@ -25,18 +25,20 @@ for i = ceil(ycenter - radii) : floor(ycenter + radii)
     end
 end
 nbpix;
-moy = som * 255 / nbpix;
+moy = som * 255 / nbpix
 
 som = zeros(1, 3);
 
-for i = xcenter - radii : xcenter + radii
-    for j = ycenter - radii : ycenter + radii
+for i = ceil(ycenter - radii) : floor(ycenter + radii)
+    for j = ceil(xcenter - radii) : floor(xcenter + radii)
         if distance(xcenter, ycenter, i, j) < radii
-            som = som + (I(i, j, :) - moy)^2;
+            for k = 1:3
+                som(k) = som(k) + (I(i, j, k) - moy(k))^2;
+            end
         end
     end
 end
 
-sigma = som / nbpix;
+sigma = som / nbpix
 
 end
