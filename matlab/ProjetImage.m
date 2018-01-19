@@ -20,13 +20,13 @@ It(:, :, 1) = If;
 It(:, :, 2) = If;
 It(:, :, 3) = If;
 
-% [centers, radii] = imfindcircles(If, [140, 240], 'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.95);
-% 
-% figure;
-% imshow(I.*It, []); colorbar;
-% viscircles(centers, radii);
+[centers, radii] = imfindcircles(If, [140, 240], 'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.95);
 
-Id = identification(If);
+figure;
+imshow(I.*It, []); colorbar;
+viscircles(centers, radii);
+
+% Id = identification(If);
 
 % tic
 % segmentation(I);

@@ -22,4 +22,6 @@ for i = xcenter - radii : xcenter + radii
     end
 end
 
+moy = som / nbpix;
+
 end
