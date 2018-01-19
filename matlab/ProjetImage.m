@@ -14,7 +14,7 @@ imtool(I);
 
 If = touche(I);
 %If = negatif(I);
-
+%%
 It = zeros(size(I));
 It(:, :, 1) = If;
 It(:, :, 2) = If;
