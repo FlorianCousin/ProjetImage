@@ -2,9 +2,9 @@
 clear
 close all;
 
-I = double(imread('..\comment\M8-C1_C2_C5_C10_C20_C50_E1_E2.jpg')) / 255;
+%I = double(imread('..\comment\M8-C1_C2_C5_C10_C20_C50_E1_E2.jpg')) / 255;
 %I = double(imread('..\set\set\C1_1.jpg')) / 255;
-%I = double(imread('..\Image Prof\20141020_112558 (1).jpg')) / 255;
+I = double(imread('..\Image Prof\20141020_112558 (1).jpg')) / 255;
 
 %M8-C1_C2_C5_C10_C20_C50_E1_E2
 %E1_2
