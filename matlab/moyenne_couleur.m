@@ -25,8 +25,16 @@ end
 
 moy = som / nbpix;
 
+som = zeros(1, 3);
+
 for i = xcenter - radii : xcenter + radii
     for j = ycenter - radii : ycenter + radii
-        if distance
+        if distance(xcenter, ycenter, i, j) < radii
+            som = som + (I(i, j, :) - moy)^2;
+        end
+    end
+end
+
+sigma = som / nbpix;
 
 end
