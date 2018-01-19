@@ -9,10 +9,12 @@ function pieces = couleur(I, tab)
 
 
 [m, ~] = size(tab);
-pieces = [tab, zeros(m, 1)];
+pieces = [tab, zeros(m, 3)]
 
 for i = 1:m
-    pieces(4) = moyenne_couleur(I, tab(m, 1), tab(m, 2), tab(m, 3));
+    pieces(4 : 6) = moyenne_couleur(I, tab(m, 1), tab(m, 2), tab(m, 3));
 end
+
+pieces
 
 end
