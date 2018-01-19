@@ -17,7 +17,7 @@ for i = xcenter - radii : xcenter + radii
     for j = ycenter - radii : ycenter + radii
         if distance(xcenter, ycenter, i, j) < radii
             nbpix = nbpix + 1;
-            som = som + I(i, j);
+            som = som + I(i, j, :);
         end
     end
 end
