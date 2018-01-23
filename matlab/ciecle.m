@@ -31,7 +31,7 @@ for i = 1:m
 
     distance_couleur_gold = distance_3D (peaces(i,4), peaces(i,5), peaces(i,6), 168.33, 129.33, 46.67);
 
-    if((peaces(i,3) >= 140) && (peaces(i,3) <= 149) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
+    if((peaces(i,3) >= 140) && (peaces(i,3) <= 151) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
         
         compte = compte + 0.01;
         
