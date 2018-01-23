@@ -14,27 +14,34 @@ function [moy, sigma] = moyenne_couleur(I, xcenter, ycenter, radii)
 som = zeros(1, 3);
 nbpix = 0;
 
-for i = xcenter - radii : xcenter + radii
-    for j = ycenter - radii : ycenter + radii
-        if distance(xcenter, ycenter, i, j) < radii
+for i = ceil(ycenter - radii) : floor(ycenter + radii)
+    for j = ceil(xcenter - radii) : floor(xcenter + radii)
+        if distance(ycenter, xcenter, i, j) < radii
             nbpix = nbpix + 1;
-            som = som + I(i, j, :);
+            for k = 1:3
+                som(k) = som(k) + I(i, j, k);
+            end
         end
     end
 end
 
-moy = som / nbpix;
+if (nbpix == 0)
+    nbpix = 1;
+end
+moy = som * 255 / nbpix
 
 som = zeros(1, 3);
 
-for i = xcenter - radii : xcenter + radii
-    for j = ycenter - radii : ycenter + radii
+for i = ceil(ycenter - radii) : floor(ycenter + radii)
+    for j = ceil(xcenter - radii) : floor(xcenter + radii)
         if distance(xcenter, ycenter, i, j) < radii
-            som = som + (I(i, j, :) - moy)^2;
+            for k = 1:3
+                som(k) = som(k) + (I(i, j, k) - moy(k))^2;
+            end
         end
     end
 end
 
-sigma = som / nbpix;
+sigma = som / nbpix
 
 end

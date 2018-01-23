@@ -43,9 +43,11 @@ Ichepo = imopen(recons, strel('disk', 50));
 Ichepo = imclearborder(Ichepo);
 
 Issangle = zeros(size(Ichepo));
+
 for i = 0:17
     Issangle = Issangle + Ichepo - imopen(Ichepo, strel('line', 50, 10 * i));
 end
+
 Issangle = im2bw(Ichepo - Issangle, 0.9);
 
 If = Issangle;
