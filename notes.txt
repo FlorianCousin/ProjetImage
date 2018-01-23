@@ -1,0 +1,48 @@
+imfindcircles
+google 'circle detector hough transform'
+google 'pixel position of circle on image'
+
+
+cco
+
+freq of each coin
+compare successes and fails
+validate code with all dataset
+cite sources
+organize matlab files (functions)
+
+
+
+
+
+
+
+
+dernier cours
+
+review, explaining failures is as important as results
+
+calculate accuracy (success / all)
+
+noise : imnoise(im2double(Org) / r, 'gaussian'); where r is ranging value
+
+graph : range in function of accuracy
+
+GUI : image space, load image button, calibrate button, calculate button, output space
+output space : frequency of each coin and total value.
+
+pour le 25 janvier 2018
+
+
+
+
+
+
+Home > New > GUI > Blank GUI
+
+ButtonDown Callback
+uigetfile(...) // open a file chooser
+imread(fullefile(PathName, FileName));
+set(handles.edit1, 'String', '0');
+
+Property inspector
