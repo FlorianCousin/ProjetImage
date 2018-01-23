@@ -40,7 +40,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 168) && (peaces(i,3) <= 171) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
+    elseif ((peaces(i,3) >= 168) && (peaces(i,3) <= 171)) %&& (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
        
         compte = compte + 0.02;
         
@@ -49,7 +49,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 196) && (peaces(i,3) <= 197) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
+    elseif ((peaces(i,3) >= 195) && (peaces(i,3) <= 197)) %%&& (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
         
         compte  = compte + 0.05;
         
@@ -58,7 +58,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 176) && (peaces(i,3) <= 178) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))   
+    elseif ((peaces(i,3) >= 176) && (peaces(i,3) <= 181) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))   
         
         compte = compte + 0.10;
         
@@ -67,7 +67,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 198) && (peaces(i,3) <= 201) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))  
+    elseif ((peaces(i,3) >= 198) && (peaces(i,3) <= 207) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))  
         
         compte = compte + 0.20;
         
@@ -85,7 +85,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 208) && (peaces(i,3) <= 209))
+    elseif ((peaces(i,3) >= 208) && (peaces(i,3) <= 214))
        
         compte = compte + 1;
         

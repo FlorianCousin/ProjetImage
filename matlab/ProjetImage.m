@@ -30,7 +30,7 @@ figure;
 imshow(It, []); colorbar;
 viscircles(centers, radii);
 
-Ic = ciecle(If, I);
+Ic = ciecle(If, I)
 
 %%
 It = zeros(size(I));

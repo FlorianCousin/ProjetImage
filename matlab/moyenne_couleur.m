@@ -16,7 +16,7 @@ nbpix = 0;
 
 for i = ceil(ycenter - radii) : floor(ycenter + radii)
     for j = ceil(xcenter - radii) : floor(xcenter + radii)
-        if distance(xcenter, ycenter, i, j) < radii
+        if distance(ycenter, xcenter, i, j) < radii
             nbpix = nbpix + 1;
             for k = 1:3
                 som(k) = som(k) + I(i, j, k);
