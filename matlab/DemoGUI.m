@@ -128,9 +128,9 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 global myImage;
 if(~isempty(myImage))
-    set(handles.edit1,'string',num2str(mean(mean(myImage(:,:,1)))));
-    set(handles.edit2,'string',num2str(mean(mean(myImage(:,:,2)))));
-    set(handles.edit3,'string',num2str(mean(mean(myImage(:,:,3)))));
+    set(handles.edit3,'string',num2str(mean(mean(myImage(:,:,1)))));
+    set(handles.edit4,'string',num2str(mean(mean(myImage(:,:,2)))));
+    set(handles.edit5,'string',num2str(mean(mean(myImage(:,:,3)))));
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
