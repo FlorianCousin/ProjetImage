@@ -31,7 +31,7 @@ for i = 1:m
 
     distance_couleur_gold = distance_3D (peaces(i,4), peaces(i,5), peaces(i,6), 168.33, 129.33, 46.67);
 
-    if((peaces(i,3) >= 280/2) && (peaces(i,3) <= 296/2) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
+    if((peaces(i,3) >= 140) && (peaces(i,3) <= 149) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
         
         compte = compte + 0.01;
         
@@ -40,7 +40,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 337/2) && (peaces(i,3) <= 339/2) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
+    elseif ((peaces(i,3) >= 168) && (peaces(i,3) <= 171) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
        
         compte = compte + 0.02;
         
@@ -49,7 +49,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 393/2) && (peaces(i,3) <= 394/2) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
+    elseif ((peaces(i,3) >= 196) && (peaces(i,3) <= 197) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
         
         compte  = compte + 0.05;
         
@@ -58,7 +58,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 352/2) && (peaces(i,3) <= 355/2) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))   
+    elseif ((peaces(i,3) >= 176) && (peaces(i,3) <= 178) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))   
         
         compte = compte + 0.10;
         
@@ -67,7 +67,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 397/2) && (peaces(i,3) <= 402/2) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))  
+    elseif ((peaces(i,3) >= 198) && (peaces(i,3) <= 201) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))  
         
         compte = compte + 0.20;
         
@@ -76,7 +76,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 446/2) && (peaces(i,3) <= 449/2) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))  
+    elseif ((peaces(i,3) >= 223) && (peaces(i,3) <= 225) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))  
         
         compte = compte + 0.50;
         
@@ -85,7 +85,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 416/2) && (peaces(i,3) <= 418/2))
+    elseif ((peaces(i,3) >= 208) && (peaces(i,3) <= 209))
        
         compte = compte + 1;
         
@@ -94,7 +94,7 @@ for i = 1:m
         centers = [peaces(i,1), peaces(i,2)];
         viscircles(centers, peaces(i,3));
 
-    elseif ((peaces(i,3) >= 461/2) && (peaces(i,3) <= 480/2))
+    elseif ((peaces(i,3) >= 230) && (peaces(i,3) <= 240))
         
         compte = compte + 2;
         

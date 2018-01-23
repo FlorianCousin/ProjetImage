@@ -24,7 +24,10 @@ for i = ceil(ycenter - radii) : floor(ycenter + radii)
         end
     end
 end
-nbpix;
+
+if (nbpix == 0)
+    nbpix = 1;
+end
 moy = som * 255 / nbpix
 
 som = zeros(1, 3);
