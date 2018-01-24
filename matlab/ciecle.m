@@ -1,4 +1,4 @@
-function compte = ciecle(mat, origin, scale)
+function compte = ciecle(mat, origin, scale, moyenne)
 
 % Cette fonction permet de distinguer les différentes pièces d'une image en
 % comparant sa taille et sa couleur par rapport aux moyennes théoriques
@@ -34,9 +34,9 @@ coins = couleur(origin, datas)
 
 for i = 1:m
     
-    distance_couleur_cui = distance_3D (coins(i,4), coins(i,5), coins(i,6), 188.91, 131.17, 72.92);
+    distance_couleur_cui = distance_3D (coins(i,4), coins(i,5), coins(i,6), moyenne(1), moyenne(2), moyenne(3));
 
-    distance_couleur_gold = distance_3D (coins(i,4), coins(i,5), coins(i,6), 168.33, 129.33, 46.67);
+    distance_couleur_gold = distance_3D (coins(i,4), coins(i,5), coins(i,6), moyenne(4), moyenne(5), moyenne(6));
 
     if((coins(i,3) >= rayonTh(1) - epsilon) && (coins(i,3) <= rayonTh(1)  + epsilon) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
         

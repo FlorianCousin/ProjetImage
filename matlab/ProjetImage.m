@@ -31,11 +31,13 @@ It(:, :, 3) = If;
 figure;
 imshow(It, []); colorbar;
 viscircles(centers, radii);
+moyenne = [188.97,131.17,72.92,168.33,129.33,46.67];
 
-Ic = ciecle(If, I, 0.0558);
+Ic = ciecle(If, I, 0.0558, moyenne);
 
 %%
 It = zeros(size(I));
+
 It(:, :, 1) = If;
 It(:, :, 2) = If;
 It(:, :, 3) = If;
