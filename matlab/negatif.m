@@ -8,12 +8,14 @@ function If = negatif(I)
 fond = zeros(1, d);
 nbpix = 2 * m + 2 * n - 4;
 
-
+% on récupère la moyenne du fonc en faisant la moyenne de tous les pixels
+% du contour de l'image
 for k = 1:d
     fond(k) = fond(k) + (sum(I(1, :, k)) + sum(I(m, :, k))) / nbpix;
     fond(k) = fond(k) + (sum(I(2:m-1, 1, k)) + sum(I(2:m-1, n, k))) / nbpix;
 end
 
+% On enlève le fond et on passe en négatif chaque canal
 for i = 1:m
     for j = 1:n
         for k = 1:d
@@ -22,28 +24,33 @@ for i = 1:m
     end
 end
 
-figure; imshow(I, []);
-
+% On passe en niveaux de gris
 Igray = rgb2gray(I);
 
+% On seuille avec 3 intervalles
 level = multithresh(Igray, 2);
 
+% On segmente entre la première intervalle et les deux autres
 It = im2bw(Igray, level(1));
 
-%It = im2bw(rgb2gray(I), 0.15);
-
+% On bouche les trous
 f_bw3 = imfill(imclose(It, strel('disk', 2)),'holes');
 
-marqueur = imerode(f_bw3,strel('disk',30));
+% On fait des marqueurs pour supprimer les tout petits artéfacts
+marqueur = imerode(f_bw3,strel('disk', 30));
 
+% On reconstruit par dilatation
 recons = imreconstruct(marqueur,f_bw3);
 
+% On effetcue une ouverture
 Ichepo = imopen(recons, strel('disk', 50));
 
+% On supprime les bords
 Ichepo = imclearborder(Ichepo);
 
 Issangle = zeros(size(Ichepo));
 
+% On arrondie les angles
 for i = 0:17
     Issangle = Issangle + Ichepo - imopen(Ichepo, strel('line', 50, 10 * i));
 end
