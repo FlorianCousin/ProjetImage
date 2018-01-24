@@ -7,12 +7,21 @@ function [compte,result] = ciecle(mat, origin, scale, moyenne)
 % compte : Nombre comptant le montant total des pièces d'une image (en
 % euros)
 %
+% result :  Matrice contenant les coordonnées du centre des cercles
+% détectés + les rayons de chaque cercles + les identifiants pour chaque
+% type de pièces. 
+%
 % mat : Image prétraitée (binarisée, les pièces sont en blanc et le fond en
 % noir) où l'on veut distinguer les pièces.
 %
 % origin : L'image couleur, celle qui correspond à mat.
 %
 % scale : scale factor correspondant à l'échelle de l'image en mm/pixels
+%
+% moyenne :  Tableau contenant les moyennes RGB théoriques pour chaque
+% couleur de pièce.
+
+
 
 rayonTh = [16.25, 18.75, 21.25, 19.75, 22.25, 24.25, 23.25, 25.75] / (2 * scale);
 % Rayon théoriques
@@ -143,6 +152,8 @@ for i = 1:m
         
         compte = compte + 0;
         
+        result (i,1:3) = coins(m,1:3);
+        result (i, 4) = 0;  
 %         figure;
 %         imshow(mat);title ('Sans famille');
 %         centers = [coins(i,1), coins(i,2)];
