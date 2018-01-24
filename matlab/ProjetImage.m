@@ -1,26 +1,29 @@
 %% Projet Image
 clear
 close all;
+clc;
 
-I = double(imread('..\comment\M8-C1_C2_C5_C10_C20_C50_E1_E2.jpg')) / 255;
+%I = double(imread('..\comment\M4-C1_C5_E1_E2.jpg')) / 255;
 %I = double(imread('..\set\set\C1_1.jpg')) / 255;
-%I = double(imread('..\Image Prof\20141020_112558 (1).jpg')) / 255;
+I = double(imread('..\Image Prof\20141020_112558 (1).jpg')) / 255;
 
 %I = double(imread('..\comment\M4-C1_C5_E1_E2.jpg')) / 255;
 
 %M8-C1_C2_C5_C10_C20_C50_E1_E2
 %E1_2
+%M4-C1_C5_E1_E2
 %MC-M4_355c
 
 figure;
 imshow(I);
 
+If = Fournier(I);
 %If = touche(I);
-If = negatif(I);
+%If = negatif(I);
 
 figure;
-imshow(If);
-
+imshow(If, []);
+%%
 [centers, radii] = imfindcircles(If, [140, 240], 'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.95);
 
 It = zeros(size(I));

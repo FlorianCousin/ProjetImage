@@ -97,19 +97,19 @@ myImage = imread(fullfile(PathName,FileName));
 %axes(handles.Image);
 imshow(myImage);
 
-set(handles.edit3,'String','0');
-set(handles.edit4,'String','0');
-set(handles.edit5,'String','0');
-set(handles.edit6,'String','0');
-set(handles.edit7,'String','0');
-set(handles.edit8,'String','0');
-set(handles.edit9,'String','0');
-set(handles.edit10,'String','0');
-set(handles.edit11,'String','0');
-set(handles.edit12,'String','0');
-set(handles.edit13,'String','0');
-set(handles.edit14,'String','0');
-set(handles.edit15,'String','0');
+% set(handles.edit3,'String','0');
+% set(handles.edit4,'String','0');
+% set(handles.edit5,'String','0');
+% set(handles.edit6,'String','0');
+% set(handles.edit7,'String','0');
+% set(handles.edit8,'String','0');
+% set(handles.edit9,'String','0');
+% set(handles.edit10,'String','0');
+% set(handles.edit11,'String','0');
+% set(handles.edit12,'String','0');
+% set(handles.edit13,'String','0');
+% set(handles.edit14,'String','0');
+% set(handles.edit15,'String','0');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 end
