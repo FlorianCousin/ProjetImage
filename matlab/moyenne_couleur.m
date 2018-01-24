@@ -28,7 +28,7 @@ end
 if (nbpix == 0)
     nbpix = 1;
 end
-moy = som * 255 / nbpix
+moy = som * 255 / nbpix;
 
 som = zeros(1, 3);
 
@@ -42,6 +42,6 @@ for i = ceil(ycenter - radii) : floor(ycenter + radii)
     end
 end
 
-sigma = som / nbpix
+sigma = som / nbpix;
 
 end

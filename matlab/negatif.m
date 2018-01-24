@@ -1,5 +1,7 @@
 function If = negatif(I)
 
+% Cette fonction permet de binariser et d'extraire les pièces d'une image.
+% On passe d'abord l'image en négatif.
 % Im est une image rgb représentant des pièces
 % If est une image binaire qui correspond à la segmentation des pièces
 

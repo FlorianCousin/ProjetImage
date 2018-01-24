@@ -1,4 +1,4 @@
-function compte = ciecle(mat, origin, scale, moyenne)
+function [compte,result] = ciecle(mat, origin, scale, moyenne)
 
 % Cette fonction permet de distinguer les différentes pièces d'une image en
 % comparant sa taille et sa couleur par rapport aux moyennes théoriques
@@ -23,14 +23,16 @@ compte = 0;
 
 [centers, radii] = imfindcircles(mat, [140, 240], 'ObjectPolarity', 'bright', 'Method', 'TwoStage', 'Sensitivity', 0.95);
 
-figure;
-imshow(mat);title ('Total');
-viscircles(centers, radii);
+% figure;
+% imshow(mat);title ('Total');
+% viscircles(centers, radii);
 
 datas = [centers, radii];
-coins = couleur(origin, datas)
+coins = couleur(origin, datas);
 
 [m, ~] = size(coins);
+
+result = zeros(m,4);
 
 for i = 1:m
     
@@ -42,82 +44,109 @@ for i = 1:m
         
         compte = compte + 0.01;
         
-        figure;
-        imshow(mat);title ('1 centime');
-        centers = [coins(i,1), coins(i,2)];
-        viscircles(centers, coins(i,3));
+        result (i,1:3) = coins(m,1:3);
+        result (i, 4) = 0.01;        
+        
+%         figure;
+%         imshow(mat);title ('1 centime');
+%         centers = [coins(i,1), coins(i,2)];
+%         viscircles(centers, coins(i,3));
+        
 
     elseif ((coins(i,3) >= rayonTh(2) - epsilon) && (coins(i,3) <= rayonTh(2) + epsilon) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
        
         compte = compte + 0.02;
         
-        figure;
-        imshow(mat);title ('2 centimes');
-        centers = [coins(i,1), coins(i,2)];
-        viscircles(centers, coins(i,3));
+        result (i,1:3) = coins(m,1:3);
+        result (i, 4) = 0.02;
+        
+%         figure;
+%         imshow(mat);title ('2 centimes');
+%         centers = [coins(i,1), coins(i,2)];
+%         viscircles(centers, coins(i,3));
 
     elseif ((coins(i,3) >= rayonTh(3) - epsilon) && (coins(i,3) <= rayonTh(3) + epsilon) && (distance_couleur_cui == min(distance_couleur_cui, distance_couleur_gold)))
         
         compte  = compte + 0.05;
         
-        figure;
-        imshow(mat);title ('5 centimes');
-        centers = [coins(i,1), coins(i,2)];
-        viscircles(centers, coins(i,3));
+        result (i,1:3) = coins(m,1:3);
+        result (i, 4) = 0.05;
+        
+%         
+%         figure;
+%         imshow(mat);title ('5 centimes');
+%         centers = [coins(i,1), coins(i,2)];
+%         viscircles(centers, coins(i,3));
 
     elseif ((coins(i,3) >= rayonTh(4) - epsilon) && (coins(i,3) <= rayonTh(4) + epsilon) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))   
         
         compte = compte + 0.10;
         
-        figure;
-        imshow(mat);title ('10 centimes');
-        centers = [coins(i,1), coins(i,2)];
-        viscircles(centers, coins(i,3));
+        result (i,1:3) = coins(m,1:3);
+        result (i, 4) = 0.10;
+        
+        
+%         figure;
+%         imshow(mat);title ('10 centimes');
+%         centers = [coins(i,1), coins(i,2)];
+%         viscircles(centers, coins(i,3));
 
     elseif ((coins(i,3) >= rayonTh(5) - epsilon) && (coins(i,3) <= rayonTh(5) + epsilon) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))  
         
         compte = compte + 0.20;
         
-        figure;
-        imshow(mat);title ('20 centimes');
-        centers = [coins(i,1), coins(i,2)];
-        viscircles(centers, coins(i,3));
+        result (i,1:3) = coins(m,1:3);
+        result (i, 4) = 0.20;
+        
+%         figure;
+%         imshow(mat);title ('20 centimes');
+%         centers = [coins(i,1), coins(i,2)];
+%         viscircles(centers, coins(i,3));
 
     elseif ((coins(i,3) >= rayonTh(6) - epsilon) && (coins(i,3) <= rayonTh(6) + epsilon) && (distance_couleur_gold == min(distance_couleur_cui, distance_couleur_gold)))  
         
         compte = compte + 0.50;
         
-        figure;
-        imshow(mat);title ('50 centimes');
-        centers = [coins(i,1), coins(i,2)];
-        viscircles(centers, coins(i,3));
+        result (i,1:3) = coins(m,1:3);
+        result (i, 4) = 0.50;
+        
+%         figure;
+%         imshow(mat);title ('50 centimes');
+%         centers = [coins(i,1), coins(i,2)];
+%         viscircles(centers, coins(i,3));
 
     elseif ((coins(i,3) >= rayonTh(7) - epsilon) && (coins(i,3) <= rayonTh(7) + epsilon))
        
         compte = compte + 1;
         
-        figure;
-        imshow(mat);title ('1 euro');
-        centers = [coins(i,1), coins(i,2)];
-        viscircles(centers, coins(i,3));
+        result (i,1:3) = coins(m,1:3);
+        result (i, 4) = 1.00;
+        
+%         figure;
+%         imshow(mat);title ('1 euro');
+%         centers = [coins(i,1), coins(i,2)];
+%         viscircles(centers, coins(i,3));
 
     elseif ((coins(i,3) >= rayonTh(8) - epsilon) && (coins(i,3) <= rayonTh(8) + epsilon))
         
         compte = compte + 2;
         
-        figure;
-        imshow(mat);title ('2 euros');
-        centers = [coins(i,1), coins(i,2)];
-        viscircles(centers, coins(i,3));
+        result (i,1:3) = coins(m,1:3);
+        result (i, 4) = 2.00;
+        
+%         figure;
+%         imshow(mat);title ('2 euros');
+%         centers = [coins(i,1), coins(i,2)];
+%         viscircles(centers, coins(i,3));
 
     else
         
         compte = compte + 0;
         
-        figure;
-        imshow(mat);title ('Sans famille');
-        centers = [coins(i,1), coins(i,2)];
-        viscircles(centers, coins(i,3));
+%         figure;
+%         imshow(mat);title ('Sans famille');
+%         centers = [coins(i,1), coins(i,2)];
+%         viscircles(centers, coins(i,3));
     
     end
 end

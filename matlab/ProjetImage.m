@@ -36,7 +36,8 @@ imshow(It, []); colorbar;
 viscircles(centers, radii);
 moyenne = [188.97,131.17,72.92,168.33,129.33,46.67];
 
-Ic = ciecle(If, I, 0.0558, moyenne);
+[c, Ic] = ciecle(If, I, 0.0558, moyenne);
+Ic
 
 %%
 It = zeros(size(I));
