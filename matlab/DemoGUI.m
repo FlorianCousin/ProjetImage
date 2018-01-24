@@ -25,6 +25,8 @@ function varargout = DemoGUI(varargin)
 % Last Modified by GUIDE v2.5 24-Nov-2014 16:06:32
 
 % Begin initialization code - DO NOT EDIT
+clc
+
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...

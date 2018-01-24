@@ -25,6 +25,8 @@ function varargout = GUI(varargin)
 % Last Modified by GUIDE v2.5 23-Jan-2018 18:09:26
 
 % Begin initialization code - DO NOT EDIT
+clc
+
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
@@ -92,7 +94,7 @@ function Importer_Callback(hObject, eventdata, handles)
           '*.*','All Files' },'Select image files only!');
 global myImage;
 myImage = imread(fullfile(PathName,FileName));
-axes(handles.Image);
+%axes(handles.Image);
 imshow(myImage);
 
 set(handles.edit3,'String','0');
