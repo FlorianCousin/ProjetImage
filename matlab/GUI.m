@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 25-Jan-2018 11:17:25
+% Last Modified by GUIDE v2.5 25-Jan-2018 16:42:17
 
 % Begin initialization code - DO NOT EDIT
 clc
@@ -166,8 +166,11 @@ if(~isempty(myImage))
       neg = negatif(myImage);  
       [compte,result] = ciecle(neg, myImage, scale, total);
       imshow(myImage);
-      viscircles(result
-
+      [m, ~] = size(result);
+      for j = 1:m
+        viscircles(result(j, 1:2), result(j, 3));
+        text(result(j, 1), result(j, 2), num2str(result(j, 4)));
+      end
 end
 end
 
@@ -498,6 +501,7 @@ end
 
 end
 
+
 function edit15_Callback(hObject, eventdata, handles)
 % hObject    handle to edit15 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -510,15 +514,19 @@ global B_ar;
 B_ar = str2num(string(hObject.String));
 
 end
+
 % --- Executes during object creation, after setting all properties.
 function edit15_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to edit15 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-
 % Hint: edit controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
+
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
+
+
 end
 end
+
