@@ -53,7 +53,7 @@ for i = 1:m
         
         compte = compte + 0.01;
         
-        result (i,1:3) = coins(m,1:3);
+        result (i,1:3) = coins(i,1:3);
         result (i, 4) = 0.01;        
         
 %         figure;
@@ -66,7 +66,7 @@ for i = 1:m
        
         compte = compte + 0.02;
         
-        result (i,1:3) = coins(m,1:3);
+        result (i,1:3) = coins(i,1:3);
         result (i, 4) = 0.02;
         
 %         figure;
@@ -78,7 +78,7 @@ for i = 1:m
         
         compte  = compte + 0.05;
         
-        result (i,1:3) = coins(m,1:3);
+        result (i,1:3) = coins(i,1:3);
         result (i, 4) = 0.05;
         
 %         
@@ -91,7 +91,7 @@ for i = 1:m
         
         compte = compte + 0.10;
         
-        result (i,1:3) = coins(m,1:3);
+        result (i,1:3) = coins(i,1:3);
         result (i, 4) = 0.10;
         
         
@@ -104,7 +104,7 @@ for i = 1:m
         
         compte = compte + 0.20;
         
-        result (i,1:3) = coins(m,1:3);
+        result (i,1:3) = coins(i,1:3);
         result (i, 4) = 0.20;
         
 %         figure;
@@ -116,7 +116,7 @@ for i = 1:m
         
         compte = compte + 0.50;
         
-        result (i,1:3) = coins(m,1:3);
+        result (i,1:3) = coins(i,1:3);
         result (i, 4) = 0.50;
         
 %         figure;
@@ -128,7 +128,7 @@ for i = 1:m
        
         compte = compte + 1;
         
-        result (i,1:3) = coins(m,1:3);
+        result (i,1:3) = coins(i,1:3);
         result (i, 4) = 1.00;
         
 %         figure;
@@ -140,7 +140,7 @@ for i = 1:m
         
         compte = compte + 2;
         
-        result (i,1:3) = coins(m,1:3);
+        result (i,1:3) = coins(i,1:3);
         result (i, 4) = 2.00;
         
 %         figure;
@@ -152,7 +152,7 @@ for i = 1:m
         
         compte = compte + 0;
         
-        result (i,1:3) = coins(m,1:3);
+        result (i,1:3) = coins(i,1:3);
         result (i, 4) = 0;  
 %         figure;
 %         imshow(mat);title ('Sans famille');

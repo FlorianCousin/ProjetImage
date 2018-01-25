@@ -11,14 +11,14 @@ nbFiles = size(files);
 
 
 for i = 1:nbFiles
-    files(i).name
-    I = double(imread(strcat('../comment/', files(i).name))) /255;
+    I = double(imread(strcat('../comment/', files(i).name))) / 255;
     neg = negatif(I);
     moy = [188.97,131.17,72.92,168.33,129.33,46.67];
     [compte, result] = ciecle(neg, I, 0.0558, moy);
-    figure; imshow(I, []);
-    for j = 1:size(result)
-        viscircles(result(1:2), result(3));
-        text(result(1), result(2), num2str(result(4)));
+    figure; imshow(I, []); title(files(i).name);
+    [m, ~] = size(result);
+    for j = 1:m
+        viscircles(result(j, 1:2), result(j, 3));
+        text(result(j, 1), result(j, 2), num2str(result(j, 4)));
     end
 end
