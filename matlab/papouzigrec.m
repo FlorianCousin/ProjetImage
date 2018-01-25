@@ -3,7 +3,7 @@ close all;
 clc;
 
 files = dir('../comment');
-%files = files.name;
+
 files = files(3:size(files)-1);
 
 nbFiles = size(files);
