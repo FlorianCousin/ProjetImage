@@ -1,7 +1,7 @@
 function id = identification(I)
 
 %   Cette fonction permet de récupérer les coordonnées des centres et
-%   le rayon de pièces pour chaque cathégorie de pièce. 
+%   le rayon de pièces pour chaque catégorie de pièce. 
 % 
 %   id : Matrice de 3 colonnes contenant les coordonnées du centre (x,y) et
 %   le rayon de la pièce.

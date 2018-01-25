@@ -1,7 +1,7 @@
 function If = immax(I)
 
-% Cette fonction transforme l'image d'entrée en niveau de gris gr^ce à la
-% noorme infinie.
+% Cette fonction transforme l'image d'entrée en niveau de gris grâce à la
+% norme infinie.
 
 % I : image d'entrée rgb
 
