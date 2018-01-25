@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 23-Jan-2018 18:09:26
+% Last Modified by GUIDE v2.5 25-Jan-2018 11:17:25
 
 % Begin initialization code - DO NOT EDIT
 clc
@@ -78,6 +78,7 @@ function varargout = GUI_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 end
 
+
 % --- Executes on button press in Importer.
 function Importer_Callback(hObject, eventdata, handles)
 % hObject    handle to Importer (see GCBO)
@@ -93,25 +94,42 @@ function Importer_Callback(hObject, eventdata, handles)
 [FileName,PathName] = uigetfile({'*.jpg;*.tif;*.png;*.gif','All Image Files';...
           '*.*','All Files' },'Select image files only!');
 global myImage;
-myImage = imread(fullfile(PathName,FileName));
-%axes(handles.Image);
+global scale;
+scale = 0.0558;
+global R_cu;
+R_cu = 188,92;
+global V_cu;
+V_cu = 131,17;
+global B_cu;
+B_cu = 72,92;
+global R_or;
+R_or = 168,33;
+global V_or;
+V_or = 129,33;
+global B_or;
+B_or = 46,67;
+global R_or2;
+R_or2 = 165,25;
+global V_or2;
+V_or2 = 131,25;
+global B_or2
+B_or2 = 69,25;
+global R_ar
+R_ar = 137,125;
+global V_ar;
+V_ar = 113,88;
+global B_ar;
+B_ar = 79,88;
+
+global result;
+result = [];
+global compte;
+compte = 0;
+
+
+myImage = double(imread(fullfile(PathName,FileName))) /255;
 imshow(myImage);
 
-% set(handles.edit3,'String','0');
-% set(handles.edit4,'String','0');
-% set(handles.edit5,'String','0');
-% set(handles.edit6,'String','0');
-% set(handles.edit7,'String','0');
-% set(handles.edit8,'String','0');
-% set(handles.edit9,'String','0');
-% set(handles.edit10,'String','0');
-% set(handles.edit11,'String','0');
-% set(handles.edit12,'String','0');
-% set(handles.edit13,'String','0');
-% set(handles.edit14,'String','0');
-% set(handles.edit15,'String','0');
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 end
 
 % --- Executes on button press in Calculer.
@@ -124,10 +142,31 @@ function Calculer_Callback(hObject, eventdata, handles)
 % Do processing calculation in loaded image
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 global myImage;
+global total;
+global scale;
+global R_cu;
+global V_cu;
+global B_cu;
+global R_or;
+global V_or;
+global B_or;
+global R_or2;
+global V_or2;
+global B_or2
+global R_ar
+global V_ar;
+global B_ar;
+global result;
+global compte;
+global neg;
+
+total = [R_cu, V_cu, B_cu, R_or, V_or, B_or, R_or2, V_or2, B_or2, R_ar, V_ar, B_ar]
+
 if(~isempty(myImage))
-    set(handles.edit1,'string',num2str(mean(mean(myImage(:,:,1)))));
-    set(handles.edit2,'string',num2str(mean(mean(myImage(:,:,2)))));
-    set(handles.edit3,'string',num2str(mean(mean(myImage(:,:,3)))));
+      neg = negatif(myImage);  
+      [compte,result] = ciecle(neg, myImage, scale, total);
+      imshow(myImage);
+      viscircles(result
 
 end
 end
@@ -140,6 +179,8 @@ function edit3_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of edit3 as text
 %        str2double(get(hObject,'String')) returns contents of edit3 as a double
+global scale;
+scale = str2num(string(hObject.String));
 
 end
 
@@ -164,6 +205,10 @@ function edit4_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of edit4 as text
 %        str2double(get(hObject,'String')) returns contents of edit4 as a double
+global R_cu;
+R_cu = str2num(string(hObject.String));
+
+
 end
 
 % --- Executes during object creation, after setting all properties.
@@ -174,6 +219,7 @@ function edit4_CreateFcn(hObject, eventdata, handles)
 
 % Hint: edit controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
+
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
@@ -188,6 +234,11 @@ function edit5_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of edit5 as text
 %        str2double(get(hObject,'String')) returns contents of edit5 as a double
+
+
+global V_cu;
+V_cu = str2num(string(hObject.String));
+
 end
 
 % --- Executes during object creation, after setting all properties.
@@ -211,6 +262,11 @@ function edit6_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of edit6 as text
 %        str2double(get(hObject,'String')) returns contents of edit6 as a double
+
+global B_cu;
+B_cu = str2num(string(hObject.String));
+
+
 end
 
 % --- Executes during object creation, after setting all properties.
@@ -233,7 +289,11 @@ function edit7_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hints: get(hObject,'String') returns contents of edit7 as text
-%        str2double(get(hObject,'String')) returns contents of edit7 as a double
+%        str2double(get(hObject,'String')) returns contents of edit7 as a
+%        double
+
+global R_or;
+R_or = str2num(string(hObject.String));
 
 end
 % --- Executes during object creation, after setting all properties.
@@ -257,6 +317,11 @@ function edit8_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of edit8 as text
 %        str2double(get(hObject,'String')) returns contents of edit8 as a double
+
+global V_or;
+V_or = str2num(string(hObject.String));
+
+
 end
 
 % --- Executes during object creation, after setting all properties.
@@ -280,6 +345,11 @@ function edit9_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of edit9 as text
 %        str2double(get(hObject,'String')) returns contents of edit9 as a double
+
+global B_or;
+B_or = str2num(string(hObject.String));
+
+
 end
 
 % --- Executes during object creation, after setting all properties.
@@ -304,6 +374,9 @@ function edit10_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of edit10 as text
 %        str2double(get(hObject,'String')) returns contents of edit10 as a double
 
+global R_or2;
+R_or2 = str2num(string(hObject.String));
+
 end
 
 
@@ -327,7 +400,11 @@ function edit11_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hints: get(hObject,'String') returns contents of edit11 as text
-%        str2double(get(hObject,'String')) returns contents of edit11 as a double
+%        str2double(get(hObject,'String')) returns contents of edit11 as a
+%        double
+
+
+V_or2 = str2num(string(hObject.String));
 
 end
 % --- Executes during object creation, after setting all properties.
@@ -351,6 +428,8 @@ function edit12_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of edit12 as text
 %        str2double(get(hObject,'String')) returns contents of edit12 as a double
+global B_or2;
+B_or2 = str2num(string(hObject.String));
 
 end
 % --- Executes during object creation, after setting all properties.
@@ -374,6 +453,9 @@ function edit13_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of edit13 as text
 %        str2double(get(hObject,'String')) returns contents of edit13 as a double
+global R_ar;
+R_ar = str2num(string(hObject.String));
+
 end
 
 % --- Executes during object creation, after setting all properties.
@@ -398,6 +480,9 @@ function edit14_Callback(hObject, eventdata, handles)
 % Hints: get(hObject,'String') returns contents of edit14 as text
 %        str2double(get(hObject,'String')) returns contents of edit14 as a double
 
+global V_ar;
+V_ar = str2num(string(hObject.String));
+
 end
 % --- Executes during object creation, after setting all properties.
 function edit14_CreateFcn(hObject, eventdata, handles)
@@ -420,6 +505,9 @@ function edit15_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of edit15 as text
 %        str2double(get(hObject,'String')) returns contents of edit15 as a double
+
+global B_ar;
+B_ar = str2num(string(hObject.String));
 
 end
 % --- Executes during object creation, after setting all properties.
