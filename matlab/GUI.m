@@ -160,7 +160,7 @@ global result;
 global compte;
 global neg;
 
-total = [R_cu, V_cu, B_cu, R_or, V_or, B_or, R_or2, V_or2, B_or2, R_ar, V_ar, B_ar]
+total = [R_cu, V_cu, B_cu, R_or, V_or, B_or, R_or2, V_or2, B_or2, R_ar, V_ar, B_ar];
 
 if(~isempty(myImage))
       neg = negatif(myImage);  
@@ -171,7 +171,7 @@ if(~isempty(myImage))
         viscircles(result(j, 1:2), result(j, 3));
         text(result(j, 1), result(j, 2), num2str(result(j, 4)));
       end
-      handles.text25.String = compte
+      handles.text25.String = compte;
 end
 end
 
