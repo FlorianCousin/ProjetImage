@@ -171,6 +171,7 @@ if(~isempty(myImage))
         viscircles(result(j, 1:2), result(j, 3));
         text(result(j, 1), result(j, 2), num2str(result(j, 4)));
       end
+      handles.text25.String = compte
 end
 end
 
