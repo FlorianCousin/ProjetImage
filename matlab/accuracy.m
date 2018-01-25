@@ -1,2 +1,3 @@
-function precision = accuracy(r)
 
+
+r = [

@@ -12,6 +12,7 @@ nbFiles = size(files);
 
 for i = 1:nbFiles
     I = double(imread(strcat('../comment/', files(i).name))) / 255;
+    I = imnoise(I, 'gaussian', 0, 0.0003);
     neg = negatif(I);
     moy = [188.97,131.17,72.92,168.33,129.33,46.67];
     [compte, result] = ciecle(neg, I, 0.0558, moy);
